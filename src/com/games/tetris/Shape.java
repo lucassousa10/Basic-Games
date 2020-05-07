@@ -50,11 +50,11 @@ public class Shape {
             S_B
     };
 
-    public static DataMatrix getShapeByID(int ID){
+    public static DataMatrix getShapeByID(int ID) {
         return SHAPES[ID];
     }
 
-    public static DataMatrix getRandomShape(){
+    public static DataMatrix getRandomShape() {
         return getShapeByID((int) Math.floor(Math.random() * SHAPES.length));
     }
 }
