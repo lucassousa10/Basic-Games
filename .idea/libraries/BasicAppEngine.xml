@@ -1,0 +1,11 @@
+<component name="libraryTable">
+  <library name="BasicAppEngine">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/libs/BasicAppEngine.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES>
+      <root url="file://$PROJECT_DIR$/../BasicAppEngine/src" />
+    </SOURCES>
+  </library>
+</component>
