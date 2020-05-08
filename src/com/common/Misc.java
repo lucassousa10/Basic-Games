@@ -1,6 +1,6 @@
 package com.common;
 
-public class Sup {
+public class Misc {
 
     public static final int TOP = 0;
     public static final int BOTTOM = 1;

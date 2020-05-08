@@ -1,7 +1,7 @@
 package com.games.tetris;
 
 import com.common.DataMatrix;
-import com.common.Sup;
+import com.common.Misc;
 import com.engine.Engine;
 
 import static com.games.tetris.MainTetris.CONTENT;
@@ -19,7 +19,7 @@ public class TetrisShape {
     }
 
     public boolean moveToRight() {
-        if (canMoveTo(Sup.RIGHT)) {
+        if (canMoveTo(Misc.RIGHT)) {
             CONTENT.insertDataMatrixAt(matrix.emptyClone(), matrix.getX(), matrix.getY());
             matrix.setX(matrix.getX() + 1);
             CONTENT.insertDataMatrixAt(matrix, matrix.getX(), matrix.getY());
@@ -30,7 +30,7 @@ public class TetrisShape {
     }
 
     public boolean moveToLeft() {
-        if (canMoveTo(Sup.LEFT)) {
+        if (canMoveTo(Misc.LEFT)) {
             CONTENT.insertDataMatrixAt(matrix.emptyClone(), matrix.getX(), matrix.getY());
             matrix.setX(matrix.getX() - 1);
             CONTENT.insertDataMatrixAt(matrix, matrix.getX(), matrix.getY());
@@ -41,7 +41,7 @@ public class TetrisShape {
     }
 
     public boolean moveToDown() {
-        if (canMoveTo(Sup.BOTTOM)) {
+        if (canMoveTo(Misc.BOTTOM)) {
             CONTENT.insertDataMatrixAt(matrix.emptyClone(), matrix.getX(), matrix.getY());
             matrix.setY(matrix.getY() + 1);
             CONTENT.insertDataMatrixAt(matrix, matrix.getX(), matrix.getY());
@@ -52,8 +52,8 @@ public class TetrisShape {
     }
 
     public boolean canMoveTo(int direction) {
-        return Sup.inBounds(CONTENT, matrix) &&
-                !Sup.hasCollisionOn(CONTENT, matrix, direction);
+        return Misc.inBounds(CONTENT, matrix) &&
+                !Misc.hasCollisionOn(CONTENT, matrix, direction);
     }
 
     public DataMatrix getMatrix() {
