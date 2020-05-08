@@ -7,34 +7,32 @@ public class Sup {
     public static final int RIGHT = 2;
     public static final int LEFT = 3;
 
-    /*
-    where subs:
-        0: top
-        1: bottom
-        2: right
-        3: left
-    todo: diagonals?
-     */
+    //todo: diagonals?
+    //todo: fix TOP
     public static boolean hasCollisionOn(DataMatrix a, DataMatrix b, int where) {
-        int xFact = where == RIGHT ? 1 : where == LEFT ? -1 : 0;
-        int yFact = where == TOP ? -1 : where == BOTTOM ? 1 : 0;
+        if (where == RIGHT || where == LEFT || where == BOTTOM){
+            int xFact = where == RIGHT ? 1 : where == LEFT ? -1 : 0;
+            int yFact = where == TOP ? -1 : where == BOTTOM ? 1 : 0;
 
-        for (int y = 0; y < b.getHeight(); y++) {
-            for (int x = 0; x < b.getWidth(); x++) {
-                if (b.getValueAt(x, y) == DataMatrix.EMPTY) {
-                    int valueInA = a.getValueAt(x + b.getX(), y + b.getY());
-                    if (valueInA != DataMatrix.EMPTY) {
-                        return true;
-                    }
-                } else {
-                    if (b.getValueAt(x + xFact, y + yFact) == DataMatrix.VOID) {
-                        int valueInA = a.getValueAt(x + b.getX() + xFact, y + b.getY() + yFact);
+            for (int y = 0; y < b.getHeight(); y++) {
+                for (int x = 0; x < b.getWidth(); x++) {
+                    if (b.getValueAt(x, y) == DataMatrix.EMPTY) {
+                        int valueInA = a.getValueAt(x + b.getX(), y + b.getY());
                         if (valueInA != DataMatrix.EMPTY) {
                             return true;
+                        }
+                    } else { //is not empty
+                        if (b.getValueAt(x + xFact, y + yFact) == DataMatrix.VOID) {
+                            int valueInA = a.getValueAt(x + b.getX() + xFact, y + b.getY() + yFact);
+                            if (valueInA != DataMatrix.EMPTY) {
+                                return true;
+                            }
                         }
                     }
                 }
             }
+        } else { //escolheu TOP
+            throw new RuntimeException("TOP NOT WORKING YET!");
         }
 
         return false;

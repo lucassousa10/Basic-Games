@@ -44,8 +44,7 @@ public class Tetris extends AbstractApplication {
     }
 
     public boolean canDownShape(DataMatrix shape) {
-        return Sup.inBounds(CONTENT, shape);
-        //&& !Colliding.bottomCollides(CONTENT, shape, activeShapeX, activeShapeY);
+        return Sup.inBounds(CONTENT, shape) && !Sup.hasCollisionOn(CONTENT, shape, Sup.BOTTOM);
     }
 
     //chamar depois que colidir na base
