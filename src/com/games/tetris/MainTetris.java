@@ -35,12 +35,21 @@ public class MainTetris extends AbstractApplication {
 
     @Override
     public void render(Engine engine, Renderer renderer) {
-        //shape.render(engine, renderer);
         for (int y = 0; y < CONTENT.getHeight(); y++) {
             for (int x = 0; x < CONTENT.getWidth(); x++) {
                 if (CONTENT.getValueAt(x, y) != DataMatrix.EMPTY) {
-                    renderer.fillRect(x * MATRIX_UNITY_SIZE, y * MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, Color.YELLOW.getRGB());
-                    renderer.drawRect(x * MATRIX_UNITY_SIZE, y * MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, Color.DARK_GRAY.getRGB());
+                    renderer.fillRect(
+                            x * MATRIX_UNITY_SIZE,
+                            y * MATRIX_UNITY_SIZE,
+                            MATRIX_UNITY_SIZE,
+                            MATRIX_UNITY_SIZE,
+                            Color.YELLOW.getRGB());
+                    renderer.drawRect(
+                            x * MATRIX_UNITY_SIZE,
+                            y * MATRIX_UNITY_SIZE,
+                            MATRIX_UNITY_SIZE,
+                            MATRIX_UNITY_SIZE,
+                            Color.DARK_GRAY.getRGB());
                 }
             }
         }
