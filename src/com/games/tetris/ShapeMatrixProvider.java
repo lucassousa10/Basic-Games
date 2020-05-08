@@ -54,10 +54,6 @@ public class ShapeMatrixProvider {
         return SHAPES[ID];
     }
 
-    public static DataMatrix getRandomShape() {
-        return getShapeByID(randomShapeID());
-    }
-
     public static DataMatrix getNew(int ID) {
         DataMatrix sel = getShapeByID(ID);
         DataMatrix res = new DataMatrix(sel.getWidth(), sel.getHeight());
