@@ -1,8 +1,8 @@
-import com.games.tetris.MainTetris;
+import com.games.tetris.Tetris;
 
 public class Main {
 
     public static void main(String[] args) {
-        MainTetris.initTetrisGame();
+        Tetris.initTetrisGame();
     }
 }

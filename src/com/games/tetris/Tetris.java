@@ -9,18 +9,18 @@ import java.awt.*;
 
 import static com.games.tetris.ShapeMatrixProvider.*;
 
-public class MainTetris extends AbstractApplication {
+public class Tetris extends AbstractApplication {
 
     public static final DataMatrix CONTENT = new DataMatrix(12, 24);
     public static final int MATRIX_UNITY_SIZE = 10;
 
-    public MainTetris() {
+    public Tetris() {
         TetrisShape shape = new TetrisShape(randomShapeID());
         spawnShape(shape);
     }
 
     public static void initTetrisGame(float... scale) {
-        MainTetris game = new MainTetris();
+        Tetris game = new Tetris();
         Engine engine = new Engine(game);
         engine.setSize(CONTENT.getWidth() * MATRIX_UNITY_SIZE,
                 CONTENT.getHeight() * MATRIX_UNITY_SIZE);

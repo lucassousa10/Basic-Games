@@ -4,7 +4,7 @@ import com.common.DataMatrix;
 import com.common.Misc;
 import com.engine.Engine;
 
-import static com.games.tetris.MainTetris.CONTENT;
+import static com.games.tetris.Tetris.CONTENT;
 
 public class TetrisShape {
 
