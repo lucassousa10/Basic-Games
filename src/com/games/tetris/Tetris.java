@@ -1,5 +1,6 @@
 package com.games.tetris;
 
+import com.common.Sup;
 import com.common.DataMatrix;
 import com.engine.AbstractApplication;
 import com.engine.Engine;
@@ -9,11 +10,13 @@ public class Tetris extends AbstractApplication {
 
     public static final DataMatrix CONTENT = new DataMatrix(12, 24);
 
+    private int activeShapeX, activeShapeY;
+
     public Tetris() {
 
     }
 
-    public void initTetris(){
+    public void initTetris() {
         Engine engine = new Engine(this);
         engine.setSize(CONTENT.getWidth() * 10, CONTENT.getHeight() * 10);
         engine.start();
@@ -29,6 +32,22 @@ public class Tetris extends AbstractApplication {
 
     }
 
+    public void leftShape(DataMatrix shape) {
+
+    }
+
+    public void downShape(DataMatrix shape) {
+        if (canDownShape(shape)) {
+            CONTENT.insertDataMatrixAt(shape.emptyClone(), activeShapeX, activeShapeY);
+            CONTENT.insertDataMatrixAt(shape, activeShapeX++, activeShapeY++);
+        }
+    }
+
+    public boolean canDownShape(DataMatrix shape) {
+        return Sup.inBounds(CONTENT, shape);
+        //&& !Colliding.bottomCollides(CONTENT, shape, activeShapeX, activeShapeY);
+    }
+
     //chamar depois que colidir na base
     private void updateFullLines() {
         boolean full = false;
@@ -37,8 +56,8 @@ public class Tetris extends AbstractApplication {
                 full = CONTENT.getValueAt(x, y) != DataMatrix.EMPTY;
             }
             if (full) {
-                if (y > 0){
-                    CONTENT.insertDataMatrixAt(CONTENT.select(0, 0, 0, y - 1), 0, 1);
+                if (y > 0) {
+                    CONTENT.insertDataMatrixAt(CONTENT.select(0, 0, CONTENT.getWidth() - 1, y - 1), 0, 1);
                 }  //else: Tetris acabou?
             }
         }
