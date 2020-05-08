@@ -53,8 +53,8 @@ public class DataMatrix {
         m.setY(y);
         for (int yy = 0; yy < m.height; yy++) {
             for (int xx = 0; xx < m.width; xx++) {
-                if (m.getValueAt(xx, yy) == EMPTY){
-                    if (getValueAt(m.getX() + xx, m.getY() + yy) == EMPTY){
+                if (m.getValueAt(xx, yy) == EMPTY) {
+                    if (getValueAt(m.getX() + xx, m.getY() + yy) == EMPTY) {
                         setValueAt(m.getValueAt(xx, yy), m.getX() + xx, m.getY() + yy);
                     }
                 } else {
@@ -103,7 +103,7 @@ public class DataMatrix {
         return new DataMatrix(width, height);
     }
 
-    public void copy(DataMatrix dm){
+    public void copy(DataMatrix dm) {
         x = dm.x;
         y = dm.y;
         width = dm.width;

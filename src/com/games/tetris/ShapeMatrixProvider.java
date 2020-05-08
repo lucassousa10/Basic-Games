@@ -58,14 +58,14 @@ public class ShapeMatrixProvider {
         return getShapeByID(randomShapeID());
     }
 
-    public static DataMatrix getNew(int ID){
+    public static DataMatrix getNew(int ID) {
         DataMatrix sel = getShapeByID(ID);
         DataMatrix res = new DataMatrix(sel.getWidth(), sel.getHeight());
         res.copy(sel);
         return res;
     }
 
-    public static int randomShapeID(){
+    public static int randomShapeID() {
         return (int) Math.floor(Math.random() * SHAPES.length);
     }
 }

@@ -14,10 +14,8 @@ public class MainTetris extends AbstractApplication {
     public static final DataMatrix CONTENT = new DataMatrix(12, 24);
     public static final int MATRIX_UNITY_SIZE = 10;
 
-    private TetrisShape shape;
-
     public MainTetris() {
-        shape = new TetrisShape(randomShapeID());
+        TetrisShape shape = new TetrisShape(randomShapeID());
         spawnShape(shape);
     }
 
@@ -40,7 +38,7 @@ public class MainTetris extends AbstractApplication {
         //shape.render(engine, renderer);
         for (int y = 0; y < CONTENT.getHeight(); y++) {
             for (int x = 0; x < CONTENT.getWidth(); x++) {
-                if (CONTENT.getValueAt(x, y) != DataMatrix.EMPTY){
+                if (CONTENT.getValueAt(x, y) != DataMatrix.EMPTY) {
                     renderer.fillRect(x * MATRIX_UNITY_SIZE, y * MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, Color.YELLOW.getRGB());
                     renderer.drawRect(x * MATRIX_UNITY_SIZE, y * MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, Color.DARK_GRAY.getRGB());
                 }
