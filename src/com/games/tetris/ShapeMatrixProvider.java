@@ -2,9 +2,7 @@ package com.games.tetris;
 
 import com.common.DataMatrix;
 
-import javax.xml.crypto.Data;
-
-public class Shape {
+public class ShapeMatrixProvider {
 
     public static final int SQUARE_ID = 0;
     public static final DataMatrix SQUARE = new DataMatrix(2, 2, new int[]{
@@ -57,7 +55,7 @@ public class Shape {
     }
 
     public static DataMatrix getRandomShape() {
-        return getShapeByID((int) Math.floor(Math.random() * SHAPES.length));
+        return getShapeByID(randomShapeID());
     }
 
     public static DataMatrix getNew(int ID){
@@ -65,5 +63,9 @@ public class Shape {
         DataMatrix res = new DataMatrix(sel.getWidth(), sel.getHeight());
         res.copy(sel);
         return res;
+    }
+
+    public static int randomShapeID(){
+        return (int) Math.floor(Math.random() * SHAPES.length);
     }
 }
