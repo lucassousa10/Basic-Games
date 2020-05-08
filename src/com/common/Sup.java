@@ -10,7 +10,7 @@ public class Sup {
     //todo: diagonals?
     //todo: fix TOP
     public static boolean hasCollisionOn(DataMatrix a, DataMatrix b, int where) {
-        if (where == RIGHT || where == LEFT || where == BOTTOM){
+        if (where == RIGHT || where == LEFT || where == BOTTOM) {
             int xFact = where == RIGHT ? 1 : where == LEFT ? -1 : 0;
             int yFact = where == TOP ? -1 : where == BOTTOM ? 1 : 0;
 
