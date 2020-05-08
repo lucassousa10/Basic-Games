@@ -3,12 +3,10 @@ package com.games.tetris;
 import com.common.DataMatrix;
 import com.common.Sup;
 import com.engine.Engine;
-import com.engine.Renderer;
-import com.engine.entities.ApplicationObject;
 
 import static com.games.tetris.MainTetris.CONTENT;
 
-public class TetrisShape extends ApplicationObject {
+public class TetrisShape {
 
     private DataMatrix matrix;
 
@@ -16,19 +14,12 @@ public class TetrisShape extends ApplicationObject {
         matrix = ShapeMatrixProvider.getNew(shapeID);
     }
 
-
-    @Override
     public void update(Engine engine, float deltaTime) {
 
     }
 
-    @Override
-    public void render(Engine engine, Renderer renderer) {
-
-    }
-
     public boolean moveToRight() {
-        if (canMoveTo(Sup.RIGHT)){
+        if (canMoveTo(Sup.RIGHT)) {
             CONTENT.insertDataMatrixAt(matrix.emptyClone(), matrix.getX(), matrix.getY());
             matrix.setX(matrix.getX() + 1);
             CONTENT.insertDataMatrixAt(matrix, matrix.getX(), matrix.getY());
@@ -39,7 +30,7 @@ public class TetrisShape extends ApplicationObject {
     }
 
     public boolean moveToLeft() {
-        if (canMoveTo(Sup.LEFT)){
+        if (canMoveTo(Sup.LEFT)) {
             CONTENT.insertDataMatrixAt(matrix.emptyClone(), matrix.getX(), matrix.getY());
             matrix.setX(matrix.getX() - 1);
             CONTENT.insertDataMatrixAt(matrix, matrix.getX(), matrix.getY());

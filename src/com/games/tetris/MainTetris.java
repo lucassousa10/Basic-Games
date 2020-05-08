@@ -5,6 +5,8 @@ import com.engine.AbstractApplication;
 import com.engine.Engine;
 import com.engine.Renderer;
 
+import java.awt.*;
+
 import static com.games.tetris.ShapeMatrixProvider.*;
 
 public class MainTetris extends AbstractApplication {
@@ -16,24 +18,40 @@ public class MainTetris extends AbstractApplication {
 
     public MainTetris() {
         shape = new TetrisShape(randomShapeID());
+        spawnShape(shape);
     }
 
-    public static void initTetris() {
+    public static void initTetrisGame(float... scale) {
         MainTetris game = new MainTetris();
         Engine engine = new Engine(game);
         engine.setSize(CONTENT.getWidth() * MATRIX_UNITY_SIZE,
                 CONTENT.getHeight() * MATRIX_UNITY_SIZE);
+        engine.setScale(scale.length > 0 ? scale[0] : 1f);
         engine.start();
     }
 
     @Override
     public void update(Engine engine, float deltaTime) {
-        shape.update(engine, deltaTime);
+
     }
 
     @Override
     public void render(Engine engine, Renderer renderer) {
-        shape.render(engine, renderer);
+        //shape.render(engine, renderer);
+        for (int y = 0; y < CONTENT.getHeight(); y++) {
+            for (int x = 0; x < CONTENT.getWidth(); x++) {
+                if (CONTENT.getValueAt(x, y) != DataMatrix.EMPTY){
+                    renderer.fillRect(x * MATRIX_UNITY_SIZE, y * MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, Color.YELLOW.getRGB());
+                    renderer.drawRect(x * MATRIX_UNITY_SIZE, y * MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, MATRIX_UNITY_SIZE, Color.DARK_GRAY.getRGB());
+                }
+            }
+        }
+    }
+
+    public void spawnShape(TetrisShape shape) {
+        int gw = CONTENT.getWidth();
+        int sw = shape.getMatrix().getWidth();
+        CONTENT.insertDataMatrixAt(shape.getMatrix(), (gw / 2) - (sw / 2), 0);
     }
 
     //chamar depois que colidir na base
