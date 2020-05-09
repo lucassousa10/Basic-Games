@@ -5,10 +5,8 @@ import com.engine.AbstractApplication;
 import com.engine.Engine;
 import com.engine.Input;
 import com.engine.Renderer;
-import com.engine.gfx.Font;
 
 import java.awt.*;
-import java.awt.event.KeyEvent;
 
 import static com.common.Misc.*;
 
@@ -21,7 +19,7 @@ public class Tetris extends AbstractApplication {
     private DataMatrix activeShape;
 
     private float timeBuffer = 0f;
-    private float speed = 1f, lastSpeed = 0f;
+    private float speed = 1f;
     private boolean gameOver = false;
 
     public Tetris() {
