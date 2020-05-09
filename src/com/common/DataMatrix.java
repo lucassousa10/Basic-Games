@@ -46,13 +46,17 @@ public class DataMatrix {
         this.copy(aux);
     }
 
-    public void insertDataMatrixAt(DataMatrix m, int x, int y) {
+    public void insertDataMatrixAt(DataMatrix m, int x, int y, boolean overrideExistingSolids) {
         m.setX(x);
         m.setY(y);
         for (int yy = 0; yy < m.height; yy++) {
             for (int xx = 0; xx < m.width; xx++) {
-                if (m.getValueAt(xx, yy) == EMPTY) {
-                    if (getValueAt(m.getX() + xx, m.getY() + yy) == EMPTY) {
+                if (!overrideExistingSolids) {
+                    if (m.getValueAt(xx, yy) == EMPTY) {
+                        if (getValueAt(m.getX() + xx, m.getY() + yy) == EMPTY) {
+                            setValueAt(m.getValueAt(xx, yy), m.getX() + xx, m.getY() + yy);
+                        }
+                    } else {
                         setValueAt(m.getValueAt(xx, yy), m.getX() + xx, m.getY() + yy);
                     }
                 } else {
@@ -67,12 +71,13 @@ public class DataMatrix {
             return null;
 
         DataMatrix res = new DataMatrix(Math.abs(toX - fromX) + 1, Math.abs(toY - fromY) + 1);
+        res.setX(fromX);
+        res.setY(fromY);
         for (int y = 0; y < res.height; y++) {
             for (int x = 0; x < res.width; x++) {
                 res.setValueAt(getValueAt(x + fromX, y + fromY), x, y);
             }
         }
-
         return res;
     }
 
@@ -150,16 +155,33 @@ public class DataMatrix {
         this.data = data;
     }
 
+    @SuppressWarnings("StringConcatenationInLoop")
     @Override
     public String toString() {
-        String s = "";
+        String s = "|";
+
+        for (int i = 0; i < width; i++) {
+            s += "---";
+        }
+
+        s += "|\n";
 
         for (int i = 0; i < data.length; i++) {
-            //noinspection StringConcatenationInLoop
             s += " ";
-            s += data[i] >= 0 ? " " + data[i] : data[i];
-            if ((i + 1) % width == 0) s += "\n";
+            if (data[i] != EMPTY) {
+                s += " @";
+            } else {
+                s += "  ";
+            }
+
+            if ((i + 1) % width == 0) s += " |\n";
         }
+
+        for (int i = 0; i < width; i++) {
+            s += "---";
+        }
+
+        s += "-|";
 
         return "DataMatrix{" +
                 "x=" + x +
