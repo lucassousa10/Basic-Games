@@ -43,9 +43,7 @@ public class DataMatrix {
         }
 
         //update current object
-        width = aux.width;
-        height = aux.height;
-        System.arraycopy(aux.data, 0, data, 0, aux.data.length);
+        this.copy(aux);
     }
 
     public void insertDataMatrixAt(DataMatrix m, int x, int y) {
