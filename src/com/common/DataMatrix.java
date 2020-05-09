@@ -69,7 +69,6 @@ public class DataMatrix {
     public DataMatrix select(int fromX, int fromY, int toX, int toY) {
         if (!coordInBounds(fromX, fromY) && !coordInBounds(toX, toY))
             return null;
-
         DataMatrix res = new DataMatrix(Math.abs(toX - fromX) + 1, Math.abs(toY - fromY) + 1);
         res.setX(fromX);
         res.setY(fromY);
