@@ -1,6 +1,6 @@
 package com.games.tetris;
 
-import com.common.DataMatrix;
+import com.util.Matrix;
 
 public class ShapeProvider {
 
@@ -14,14 +14,14 @@ public class ShapeProvider {
             {{0, 1, 1, 1, 1, 0}, {3, 2}}
     };
 
-    public static DataMatrix createShape() {
+    public static Matrix createShape() {
         int ID = (int) Math.round(Math.random() * (SHAPES.length - 1));
         int rotation = (int) Math.round(Math.random() * 3);
         return createShape(ID, rotation);
     }
 
-    public static DataMatrix createShape(int ID, int rotation) {
-        DataMatrix m = new DataMatrix(SHAPES[ID][1][0], SHAPES[ID][1][1], SHAPES[ID][0]);
+    public static Matrix createShape(int ID, int rotation) {
+        Matrix m = new Matrix(SHAPES[ID][1][0], SHAPES[ID][1][1], SHAPES[ID][0]);
         if (ID != 0 && rotation > 0) {
             for (int i = 0; i < rotation; i++) {
                 m.rotate();

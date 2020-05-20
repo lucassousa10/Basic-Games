@@ -1,4 +1,4 @@
-package com.common;
+package com.util;
 
 public class MeasureTime {
 
@@ -7,7 +7,8 @@ public class MeasureTime {
         for (int i = 0; i < times; i++) {
             action.actionToPerform();
         }
-        System.out.println((System.currentTimeMillis() - a) + "ms to perform " + times + " times.");
+        System.out.println((System.currentTimeMillis() - a) +
+                "ms to perform " + times + " times.");
     }
 
     public interface Action {

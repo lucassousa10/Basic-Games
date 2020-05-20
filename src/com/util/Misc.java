@@ -1,4 +1,4 @@
-package com.common;
+package com.util;
 
 public class Misc {
 
@@ -9,22 +9,22 @@ public class Misc {
 
     //todo: diagonals?
     //todo: fix TOP
-    public static boolean hasCollisionOn(DataMatrix a, DataMatrix b, int where) {
+    public static boolean hasCollisionOn(Matrix a, Matrix b, int where) {
         if (where == RIGHT || where == LEFT || where == BOTTOM) {
             int xFact = where == RIGHT ? 1 : where == LEFT ? -1 : 0;
             int yFact = where == TOP ? -1 : where == BOTTOM ? 1 : 0;
 
             for (int y = 0; y < b.getHeight(); y++) {
                 for (int x = 0; x < b.getWidth(); x++) {
-                    if (b.getValueAt(x, y) == DataMatrix.EMPTY) {
-                        int valueInA = a.getValueAt(x + b.getX(), y + b.getY());
-                        if (valueInA != DataMatrix.EMPTY) {
+                    if (b.get(x, y) == Matrix.EMPTY) {
+                        int valueInA = a.get(x + b.getX(), y + b.getY());
+                        if (valueInA != Matrix.EMPTY) {
                             return true;
                         }
                     } else { //is not empty
-                        if (b.getValueAt(x + xFact, y + yFact) == DataMatrix.VOID) {
-                            int valueInA = a.getValueAt(x + b.getX() + xFact, y + b.getY() + yFact);
-                            if (valueInA != DataMatrix.EMPTY) {
+                        if (b.get(x + xFact, y + yFact) == Matrix.VOID) {
+                            int valueInA = a.get(x + b.getX() + xFact, y + b.getY() + yFact);
+                            if (valueInA != Matrix.EMPTY) {
                                 return true;
                             }
                         }
@@ -32,13 +32,13 @@ public class Misc {
                 }
             }
         } else { //escolheu TOP
-            throw new RuntimeException("TOP NOT WORKING YET!");
+            throw new RuntimeException("TOP COLLISION NOT WORKING YET!");
         }
 
         return false;
     }
 
-    public static boolean inBounds(DataMatrix a, DataMatrix b) {
+    public static boolean inBounds(Matrix a, Matrix b) {
         return (b.getX() >= 0 && b.getX() + (b.getWidth() - 1) < a.getWidth()) &&
                 (b.getY() >= 0 && b.getY() + (b.getHeight() - 1) < a.getHeight());
     }

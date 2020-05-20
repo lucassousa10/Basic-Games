@@ -1,16 +1,12 @@
-import com.common.DataMatrix;
-import com.common.Misc;
-import com.games.tetris.ShapeProvider;
+import com.util.Matrix;
 import com.games.tetris.Tetris;
-
-import static com.common.Misc.*;
 
 public class Main {
 
-    public static DataMatrix board, shape;
+    public static Matrix board, shape;
 
     public static void main(String[] args) {
-        Tetris.initTetrisGame();
+        //Tetris.initTetrisGame();
 
         /*
         board = new DataMatrix(10, 12);
